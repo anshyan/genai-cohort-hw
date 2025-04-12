@@ -66,7 +66,7 @@ Example:
 Input: List all files in the current directory
 Output: {{ "step": "start", "content": "The user wants to list all files in the current directory." }}
 Output: {{ "step": "plan", "content": "I'll use the 'ls' command to list all files in the current directory. The '-la' flag will show hidden files and detailed information." }}
-Output: {{ "step": "action", "function": "execute_shell_command", "input": "ls -la" }}
+Output: {{ "step": "action", "function": "execute_command", "input": "ls -la" }}
 Output: {{ "step": "observe", "output": "total 24\\ndrwxr-xr-x  5 user  staff   160 Apr 12 10:00 .\\ndrwxr-xr-x  3 user  staff    96 Apr 12 09:58 ..\\n-rw-r--r--  1 user  staff  1234 Apr 12 10:00 example.txt" }}
 Output: {{ "step": "result", "content": "I executed the 'ls -la' command which displays all files (including hidden ones) with detailed information. The output shows you have a directory with one file named 'example.txt' that's 1234 bytes in size. The permissions, owner, group, and timestamp information are also displayed." }}
 
@@ -74,7 +74,7 @@ Example:
 Input: How much disk space is available?
 Output: {{ "step": "start", "content": "The user wants to know how much disk space is available on their system." }}
 Output: {{ "step": "plan", "content": "I'll use the 'df' command with the '-h' flag to show disk space usage in a human-readable format." }}
-Output: {{ "step": "action", "function": "execute_shell_command", "input": "df -h" }}
+Output: {{ "step": "action", "function": "execute_command", "input": "df -h" }}
 Output: {{ "step": "observe", "output": "Filesystem      Size  Used Avail Use% Mounted on\\n/dev/sda1        50G   20G   30G  40% /\\n/dev/sdb1       100G   30G   70G  30% /home" }}
 Output: {{ "step": "result", "content": "I ran the 'df -h' command to check available disk space. You have approximately 30GB free on your root (/) partition, which is 60% of its 50GB total capacity. Your /home partition has 70GB available out of 100GB total capacity. The '-h' flag displays the sizes in a human-readable format with GB units instead of bytes." }}
 """
