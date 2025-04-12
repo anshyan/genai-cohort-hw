@@ -13,19 +13,19 @@ genai.configure(api_key=API_KEY)
 model = genai.GenerativeModel('gemini-2.0-flash-001')
 
 def execute_command(command):
-    # try:
-    #     result = subprocess.run(command, shell=True, capture_output=True, text=True)
-    #     if result.returncode == 0:
-    #         output = result.stdout.strip()
-    #         print(f"- Command executed: {command}")
-    #         return f"Command output: {output}"
-    #     else:
-    #         return f"Command failed with error: {result.stderr}"
-    # except Exception as e:
-    #     return f"Error executing command: {str(e)}"
+    # result = os.system(command)
+    # return result
+    try:
+        result = subprocess.run(command, shell=True, capture_output=True, text=True)
+        if result.returncode == 0:
+            output = result.stdout.strip()
+            print(f"- Command executed: {command}")
+            return f"Command output: {output}"
+        else:
+            return f"Command failed with error: {result.stderr}"
+    except Exception as e:
+        return f"Error executing command: {str(e)}"
 
-    result = os.system(command)
-    return result
 
 available_tools = {
     "execute_command": {
