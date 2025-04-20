@@ -1,0 +1,19 @@
+services:
+  ollama:
+    image: ghcr.io/ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ./ollama:/ollama
+    restart: unless-stopped
+    # environment:
+    #   - OLLAMA_API_KEY=${OLLAMA_API_KEY}
+    #   - OLLAMA_API_URL=http://localhost:11434
+    #   - OLLAMA_MODEL_PATH=/ollama/models
+    #   - OLLAMA_CACHE_PATH=/ollama/cache
+    #   - OLLAMA_DATA_PATH=/ollama/data
+    #   - OLLAMA_LOG_LEVEL=info
+
+volumes:
+  models:

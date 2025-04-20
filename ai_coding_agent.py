@@ -10,6 +10,7 @@ API_KEY = os.getenv("API_KEY")
 
 genai.configure(api_key=API_KEY)
 model = genai.GenerativeModel('gemini-2.0-flash-001')
+# model = genai.GenerativeModel('gemini-2.5-pro-exp-03-25')
 
 available_tools = {
     "execute_command": {
@@ -131,7 +132,7 @@ while True:
         parsed_response = json.loads(response.candidates[0].content.parts[0].text)
         messages.append({"role": "model", "parts": [{"text": json.dumps(parsed_response)}]})
 
-        print(f"-----Assistant Response: {parsed_response}")
+        print(f"-----Assistant Response:----------- /n {parsed_response}")
 
         step = parsed_response.get("step")
 
