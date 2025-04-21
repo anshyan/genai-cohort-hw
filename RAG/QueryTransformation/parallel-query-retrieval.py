@@ -58,9 +58,9 @@ except Exception as e:
     
     # Create new collection and store documents
     qdrant = QdrantVectorStore.from_documents(
+        client=client,
         documents=splitted_docs,
         embedding=vector_embedding_model,
-        url="http://localhost:6333",
         prefer_grpc=False,
         collection_name=collection_name,
     )
